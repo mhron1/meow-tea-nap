@@ -292,10 +292,30 @@ r.dataset.theme=t}
       </div>
       <div class="spot blob">
         <h3><svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5 15.9a.7.7 0 0 1-1 .2c-2.7-1.6-6-2-10-1.1a.7.7 0 1 1-.3-1.4c4.3-1 8-.6 11 1.2.3.2.4.7.3 1.1zm1.3-3a.9.9 0 0 1-1.2.3c-3-1.9-7.7-2.4-11.3-1.3a.9.9 0 1 1-.5-1.7c4.1-1.2 9.2-.6 12.7 1.5.4.3.5.8.3 1.2zm.1-3.1C14.8 8.6 8.8 8.4 5.3 9.4a1 1 0 1 1-.6-2c4-1.2 10.7-1 14.8 1.5a1 1 0 0 1-1.1 1.9z"/></svg>Spotify</h3>
-        <p class="small" style="margin:0">Вставь ссылку на трек, альбом или плейлист.</p>
-        <div class="in"><input id="spUrl" placeholder="https://open.spotify.com/…" inputmode="url" aria-label="Ссылка Spotify"><button class="btn" id="spGo" type="button">Ок</button></div>
+        <p class="small" style="margin:0">Наши плейлисты:</p>
+        <div class="ctrls" id="spLists">
+          <button class="chip" type="button" data-id="37i9dQZF1E4v6rppWPhIcj">Плейлист 1</button>
+          <button class="chip" type="button" data-id="48NveoJWO1idlxjDfp2hRl">Плейлист 2</button>
+          <button class="chip" type="button" data-id="2iKnVytXFd4Nt0J0iRb3sw">Плейлист 3</button>
+          <button class="chip" type="button" data-id="01NNGvWZTmt4YkyNXnit25">Плейлист 4</button>
+        </div>
         <div id="spOut"></div>
-        <p class="small" style="margin:0">Встроенный плеер Spotify заработает, когда сайт будет на своём домене. Здесь внешние плееры блокируются — поэтому есть кнопка «Открыть в Spotify».</p>
+        <p class="small" style="margin:0">Играет только 30 секунд? Так Spotify делает для всех, кто не вошёл в аккаунт. <a href="https://accounts.spotify.com/login" target="_blank" rel="noopener">Войди в Spotify</a> в этом браузере и обнови страницу — или жми «Открыть в Spotify» и слушай целиком там.</p>
+        <p class="small" style="margin:0">Или вставь свою ссылку на трек, альбом или плейлист:</p>
+        <div class="in"><input id="spUrl" placeholder="https://open.spotify.com/…" inputmode="url" aria-label="Ссылка Spotify"><button class="btn" id="spGo" type="button">Ок</button></div>
+        <script>
+          (function(){
+            var box=document.getElementById('spLists'),out=document.getElementById('spOut');
+            function show(btn){
+              var id=btn.getAttribute('data-id');
+              box.querySelectorAll('.chip').forEach(function(b){b.setAttribute('aria-pressed',b===btn?'true':'false')});
+              out.innerHTML='<iframe src="https://open.spotify.com/embed/playlist/'+id+'" style="height:352px" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify"></iframe>'
+                +'<p style="margin:10px 0 0"><a class="btn ghost" href="https://open.spotify.com/playlist/'+id+'" target="_blank" rel="noopener">Открыть в Spotify</a></p>';
+            }
+            box.addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)show(b)});
+            show(box.querySelector('.chip'));
+          })();
+        </script>
       </div>
     </div>
     <div class="tapes" id="tapes"></div>
