@@ -302,7 +302,7 @@ r.dataset.theme=t}
         <div id="spOut"></div>
         <p class="small" style="margin:0">Играет только 30 секунд? Так Spotify делает для всех, кто не вошёл в аккаунт. <a href="https://accounts.spotify.com/login" target="_blank" rel="noopener">Войди в Spotify</a> в этом браузере и обнови страницу — или жми «Открыть в Spotify» и слушай целиком там.</p>
         <p class="small" style="margin:0">Или вставь свою ссылку на трек, альбом или плейлист:</p>
-        <div class="in"><input id="spUrl" placeholder="https://open.spotify.com/…" inputmode="url" aria-label="Ссылка Spotify"><button class="btn" id="spGo" type="button">Ок</button></div>
+        <div class="in"><input id="spUrl" autocomplete="off" value="" placeholder="https://open.spotify.com/…" inputmode="url" aria-label="Ссылка Spotify"><button class="btn" id="spGo" type="button">Ок</button></div>
         <script>
           (function(){
             var box=document.getElementById('spLists'),out=document.getElementById('spOut');
@@ -408,6 +408,6 @@ r.dataset.theme=t}
 <div class="toast" id="toast" role="status"></div>
 <div class="dbar" id="dbar" aria-hidden="true">фаза быстрого сна · едем автостопом →</div>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>
