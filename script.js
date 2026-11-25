@@ -221,9 +221,9 @@ $('#spGo').addEventListener('click',()=>{
   if(!m){out.innerHTML='<p class="small" style="margin:0">Не похоже на ссылку Spotify. Скопируй её через «Поделиться → Копировать ссылку».</p>';return}
   const [,t,id]=m;
   out.innerHTML=`<iframe src="https://open.spotify.com/embed/${t}/${id}" allow="autoplay; clipboard-write; encrypted-media; fullscreen" loading="lazy" title="Spotify"></iframe><p style="margin:10px 0 0"><a class="btn ghost" href="https://open.spotify.com/${t}/${id}" target="_blank" rel="noopener">Открыть в Spotify</a></p>`;
-  store.set('mtn-sp',v);
+  $('#spUrl').value='';
 });
-{const s=store.get('mtn-sp','');if(s)$('#spUrl').value=s}
+try{localStorage.removeItem('mtn-sp')}catch(e){}
 
 /* бронь */
 const fTime=$('#fTime');fTime.innerHTML=Array.from({length:13},(_,i)=>`<option>${String(10+i).padStart(2,'0')}:00</option>`).join('');fTime.value='15:00';
