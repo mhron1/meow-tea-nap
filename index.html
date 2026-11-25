@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTN — Meow Tea Nap</title>
+<script>
+{let t=null;try{t=localStorage.getItem('mtn-theme')}catch(e){}
+const r=document.documentElement;
+if(t!=='light'&&t!=='dark')t=r.dataset.theme==='dark'||r.dataset.theme==='light'?r.dataset.theme:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+r.dataset.theme=t}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;600;800&family=Caveat:wght@600;700&family=Metal+Mania&family=Pirata+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="navin">
+    <a class="brand" href="#top" aria-label="MTN, на главную"><svg viewBox="0 0 40 40"><path d="M7 16L9 4l9 7h4l9-7 2 12a14 13 0 1 1-26 0z" fill="var(--fur)"/><circle cx="14" cy="21" r="3" fill="var(--iris2)"/><circle cx="26" cy="21" r="3" fill="var(--iris2)"/></svg>MTN</a>
+    <div class="links"><a href="#rules">Правила</a><a href="#menu">Меню</a><a href="#radio">Радио</a><a href="#cats">Коты</a><a href="#book">Бронь</a><a class="me" href="#about">Обо мне</a></div>
+    <span class="eggs" id="eggs" title="Найденные пасхалки"><svg viewBox="0 0 40 40"><ellipse cx="20" cy="27" rx="9" ry="7.5"/><ellipse cx="9" cy="17" rx="4" ry="5"/><ellipse cx="16" cy="10" rx="4" ry="5"/><ellipse cx="24" cy="10" rx="4" ry="5"/><ellipse cx="31" cy="17" rx="4" ry="5"/></svg><span id="eggN">0/4</span></span>
+    <button class="toggle" id="toggle" type="button" aria-label="Переключить день и ночь"><span class="track"><b></b></span><span class="day">День</span><span class="night">Ночь</span></button>
+  </div>
+</nav>
+
+<div id="home">
+<header id="top">
+  <div class="sky" id="sky">
+    <button class="orb" id="orb" type="button" aria-label="Солнце или луна"></button>
+    <div class="stars" id="stars"></div><div class="shoot" id="shoot"></div>
+    <span class="stk stk1"><span class="day nm">на смене: Дексик</span><span class="night nm">на смене: Сёма</span><span class="mx">на смене: Макс · 11:11</span></span><span class="stk stk2"><span class="day">открыто до 23:00</span><span class="night">ночная смена до 02:00</span></span>
+    <button class="bird" id="bird" type="button" aria-label="Птица"><svg viewBox="0 0 48 40"><ellipse cx="22" cy="24" rx="12" ry="8"/><circle cx="33" cy="18" r="6"/><path d="M38 17l8 2-8 3z"/><path d="M11 23L1 17l3 9z"/><path class="w" d="M18 20C14 6 26 2 30 18z"/><circle cx="35" cy="16.5" r="1.4" fill="var(--bg)"/></svg></button>
+    <div class="stage" id="stage">
+      <button class="dream" id="dream" type="button" aria-label="Сон кота"><svg viewBox="0 0 170 120"><circle cx="18" cy="112" r="5" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/><circle cx="32" cy="98" r="8" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/><path d="M40 70c-14-2-18-26 2-30 0-22 30-28 40-12 10-16 44-10 42 10 22 0 24 30 6 34 2 18-26 22-36 10-12 12-40 10-44-6z" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5"/><path d="M50 62h80" stroke="var(--mute)" stroke-width="3" class="road" stroke-dasharray="8 4"/><rect x="74" y="44" width="30" height="13" rx="5" fill="var(--accent)"/><circle cx="80" cy="58" r="3.5" fill="var(--ink)"/><circle cx="98" cy="58" r="3.5" fill="var(--ink)"/><path d="M118 58v-10m0 0l-4 2m4-2l5 1" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg></button>
+      <svg id="logo" viewBox="20 -14 960 410" role="img" aria-label="Объёмный логотип MTN в виде кота">
+        <defs>
+          <g id="glyph">
+            <path class="gs" stroke-width="82" d="M125 330V120L205 248L285 120V330"/>
+            <path class="gs" stroke-width="82" d="M685 330V120L845 330V120"/>
+            <path class="gs" stroke-width="36" d="M852 288C930 284 950 190 910 146C892 126 912 100 936 114"/>
+            <path class="gs" stroke-width="90" d="M500 190V330"/>
+            <path class="gf" stroke-width="16" d="M390 112L404 20L478 86Z"/><path class="gf" stroke-width="16" d="M610 112L596 20L522 86Z"/>
+            <path class="gf" stroke-width="8" d="M374 132L332 146L360 158L330 176L364 180L346 198L384 190Z"/>
+            <path class="gf" stroke-width="8" d="M626 132L668 146L640 158L670 176L636 180L654 198L616 190Z"/>
+            <rect class="gf" x="360" y="70" width="280" height="140" rx="68" stroke-width="0"/>
+          </g>
+          <mask id="gm" maskUnits="userSpaceOnUse" x="0" y="-20" width="1000" height="440"><use href="#glyph" style="color:#fff"/></mask>
+          <filter id="wob" x="-8%" y="-12%" width="116%" height="124%">
+            <feTurbulence id="turb" type="fractalNoise" baseFrequency=".012" numOctaves="2" seed="7" result="n"><animate id="turbA" attributeName="baseFrequency" values=".012;.0145;.012" dur="7s" repeatCount="indefinite"/></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <radialGradient id="light" gradientUnits="userSpaceOnUse" cx="300" cy="60" r="460"><stop offset="0" class="lc" stop-opacity=".5"/><stop offset=".55" class="lc" stop-opacity=".06"/><stop offset="1" class="lc" stop-opacity="0"/></radialGradient>
+          <linearGradient id="under" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+          <radialGradient id="irisG" cx=".45" cy=".3" r=".75"><stop offset="0" class="ir1"/><stop offset="1" class="ir2"/></radialGradient>
+        </defs>
+        <ellipse class="gsh" id="gsh" cx="505" cy="374" rx="430" ry="11"/>
+        <g filter="url(#wob)">
+          <g id="ext"></g>
+          <use href="#glyph" class="top"/>
+          <g mask="url(#gm)">
+            <path class="fhi" d="M456 206Q466 240 478 218Q489 248 500 220Q511 248 522 218Q534 240 544 206Z"/>
+            <path class="sock" id="socks"/>
+            <circle class="sock" cx="930" cy="116" r="22"/>
+            <rect x="0" y="-20" width="1000" height="440" fill="url(#under)"/>
+            <rect x="0" y="-20" width="1000" height="440" fill="url(#light)"/>
+          </g>
+        </g>
+        <path class="ein" d="M410 92L417 46L452 82Z"/><path class="ein" d="M590 92L583 46L548 82Z"/>
+        <path class="mark" d="M482 80l6 20M500 76v22M518 80l-6 20"/>
+        <g class="eye"><ellipse class="iris" cx="452" cy="142" rx="31" ry="34"/>
+          <g class="pupil" data-cx="452" data-cy="142" transform="translate(452 142)"><ellipse class="pp oval" rx="14" ry="20"/><ellipse class="pp slit" rx="5" ry="25"/></g>
+          <circle cx="441" cy="127" r="8.5" fill="#fff"/><circle cx="462" cy="154" r="3.5" fill="#fff" opacity=".85"/>
+          <path class="lid" d="M402 132l10 8Q420 114 452 108Q476 106 488 122"/></g>
+        <g class="eye eye2"><ellipse class="iris" cx="548" cy="142" rx="31" ry="34"/>
+          <g class="pupil" data-cx="548" data-cy="142" transform="translate(548 142)"><ellipse class="pp oval" rx="14" ry="20"/><ellipse class="pp slit" rx="5" ry="25"/></g>
+          <circle cx="537" cy="127" r="8.5" fill="#fff"/><circle cx="558" cy="154" r="3.5" fill="#fff" opacity=".85"/>
+          <path class="lid" d="M598 132l-10 8Q580 114 548 108Q524 106 512 122"/></g>
+        <path class="closed lid" d="M424 146q28 14 56 0M520 146q28 14 56 0"/>
+        <path class="joy lid" d="M428 128l28 14-28 14M572 128l-28 14 28 14"/>
+        <path class="nose" d="M491 172h18l-9 9z"/>
+        <path class="ml" d="M484 188q8 8 16 0q8 8 16 0"/><path d="M503 191l4 8 3-7z" fill="#fff"/>
+        <path class="hatch" d="M398 178l9-12M411 178l9-12M424 178l9-12M567 178l9-12M580 178l9-12M593 178l9-12"/>
+        <path class="wh" d="M370 166L326 160M370 176L324 182M630 166L674 160M630 176L676 182"/>
+        <g class="zzz"><text x="640" y="80">z</text><text x="662" y="58">z</text><text x="680" y="40">z</text></g>
+        <g class="rusthat"><path d="M372 104Q372 16 500 12V104Z" fill="#1b1a20" stroke="#111" stroke-width="5" stroke-linejoin="round"/><path d="M500 12Q628 16 628 104H500Z" fill="#eaa3b6" stroke="#111" stroke-width="5" stroke-linejoin="round"/><path d="M396 70Q404 40 424 30M432 62Q438 38 452 26M540 30Q560 40 568 66M562 24Q588 36 600 72" fill="none" stroke="#3a3842" stroke-width="3" stroke-linecap="round"/><path d="M540 30Q560 40 568 66M562 24Q588 36 600 72" fill="none" stroke="#c97890" stroke-width="3" stroke-linecap="round"/><rect x="362" y="88" width="138" height="24" rx="10" fill="#26252c" stroke="#111" stroke-width="5"/><rect x="500" y="88" width="138" height="24" rx="10" fill="#d4879d" stroke="#111" stroke-width="5"/><path d="M384 92v16M400 92v16M416 92v16M432 92v16M448 92v16M464 92v16M480 92v16" stroke="#3a3842" stroke-width="2.5"/><path d="M520 92v16M536 92v16M552 92v16M568 92v16M584 92v16M600 92v16M616 92v16" stroke="#b86f86" stroke-width="2.5"/></g>
+
+      </svg>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true" style="background:transparent;margin-top:-46px;position:relative;z-index:1"><path d="M0 26C140 6 260 40 420 24S700 4 860 22 1080 38 1200 18V48H0z"/></svg>
+
+  <div class="band" style="padding-top:clamp(24px,3vw,40px)">
+    <div class="wrap intro">
+      <div>
+        <h1>Чай, <span class="circ">коты<svg viewBox="0 0 120 60" preserveAspectRatio="none"><path d="M10 34C6 14 50 4 88 8s34 30 10 40C70 58 20 56 8 40c-4-6 2-14 12-20"/></svg></span> и&nbsp;двадцать минут тишины</h1>
+        <p class="lead">MTN — это Meow, Tea, Nap. Днём за порядком следит рыжий Дексик, ночью — чёрный Сёма, а над всеми стоит пухлый Михалыч. Переключи смену в шапке. И присмотрись: здесь кое-что спрятано.</p>
+        <div class="cta"><a class="btn" href="#book">Забронировать место</a><a class="btn ghost" href="#radio">Включить радио</a></div>
+      </div>
+      <div class="bubbles"><div class="bub blob"><b>12</b><span>сортов чая</span></div><div class="bub blob"><b>4</b><span>кота в штате</span></div><div class="bub blob"><b>20′</b><span>идеальный нап</span></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="band alt" id="rules">
+  <div class="wrap">
+    <h2>Три правила</h2>
+    <p class="lead">Название — это и есть инструкция.</p>
+    <div class="rules">
+      <div class="rule blob"><span class="note2">раз</span><span class="big">M</span><h3>Meow</h3><p>Коты подходят сами. Гладить можно, будить нельзя, кормить со стола тоже нельзя — даже если смотрят очень убедительно.</p></div>
+      <div class="rule blob"><span class="note2">два</span><span class="big">T</span><h3>Tea</h3><p>Улуны, пуэры, травяные сборы и матча. Подаём в чайниках на двоих, кипяток доливаем сколько угодно.</p></div>
+      <div class="rule blob"><span class="note2">три</span><span class="big">N</span><h3>Nap</h3><p>Шесть капсул с пледами и белым шумом. Разбудим через 20 минут — или кот разбудит раньше.</p></div>
+    </div>
+    <figure class="scene blob" aria-label="Мультсценка: кот Шашлык находит у кафе пакетик кошачьей мяты, коты-полицейские её изымают и увозят Шашлыка">
+      <svg viewBox="0 0 720 380" role="img">
+        <defs>
+          <pattern id="awn" width="40" height="30" patternUnits="userSpaceOnUse"><rect width="20" height="30" fill="#ff7a1f"/><rect x="20" width="20" height="30" fill="#fff4e4"/></pattern>
+        </defs>
+        <rect class="sc-sky" width="720" height="300"/>
+        <circle class="sc-orb" cx="470" cy="70" r="26"/>
+        <!-- знак -->
+        <rect x="629" y="150" width="7" height="152" fill="#8a8d96" stroke="#1b1717" stroke-width="2.5"/>
+        <rect x="558" y="108" width="152" height="52" rx="3" fill="#fff" stroke="#111" stroke-width="5"/>
+        <text x="634" y="141" text-anchor="middle" class="sc-sign">Североморск</text>
+        <!-- кафе -->
+        <rect class="sc-wall o2" x="40" y="96" width="290" height="206" rx="6"/>
+        <rect class="o2" x="108" y="100" width="156" height="34" rx="9" fill="#1d1b2f"/>
+        <path d="M122 102l6-14 10 12zM250 102l-6-14-10 12z" fill="#1d1b2f"/>
+        <text x="186" y="126" text-anchor="middle" class="sc-mtn">MTN</text>
+        <rect class="o2" x="30" y="140" width="310" height="24" fill="url(#awn)"/>
+        <path class="o2" fill="#ff7a1f" d="M30 164q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 20 0q10 14 10 0Z"/>
+        <rect class="sc-win o2" x="58" y="186" width="124" height="86" rx="6"/>
+        <path fill="#ff8a2e" d="M120 272v-30q0-12 10-16l-4-12 10 8h8l10-8-4 12q10 4 10 16v30z"/>
+        <circle cx="132" cy="236" r="2.4" fill="#1b1717"/><circle cx="148" cy="236" r="2.4" fill="#1b1717"/>
+        <path d="M58 229h124M120 186v86" stroke="#fff" stroke-width="3" opacity=".6"/>
+        <rect class="o2" x="206" y="184" width="64" height="118" rx="4" fill="#7a4a2a"/>
+        <circle cx="258" cy="246" r="4" fill="#e3b54a"/>
+        <rect class="o2" x="211" y="198" width="54" height="18" rx="4" fill="#fff4e4"/><text x="238" y="211" text-anchor="middle" class="sc-open">открыто</text>
+        <path class="o2" fill="#c96a3a" d="M288 280h32l-5 22h-22z"/>
+        <path class="o2" fill="#5fa24a" d="M304 282q-20-18-8-34q6 14 8 4q2-18 14-22q-4 18 2 18q10-12 16-6q-10 10-18 40z"/>
+        <!-- земля -->
+        <rect class="sc-walk" y="300" width="720" height="22"/>
+        <rect class="sc-road" y="322" width="720" height="58"/>
+        <path d="M0 352h720" stroke="#fff" stroke-width="4" stroke-dasharray="26 22" opacity=".7"/>
+
+
+        <!-- Шашлык -->
+        <g class="an sh">
+          <path d="M-28-24Q-52-30-46-58Q-44-68-37-61" fill="none" stroke="#1b1717" stroke-width="11" stroke-linecap="round"/>
+          <path d="M-28-24Q-52-30-46-58Q-44-68-37-61" fill="none" stroke="#a3a8b0" stroke-width="6" stroke-linecap="round"/>
+          <g class="lg lg1"><path d="M-18-16V0M14-16V0" stroke="#1b1717" stroke-width="10" stroke-linecap="round"/><path d="M-18-16V0M14-16V0" stroke="#a3a8b0" stroke-width="5.5" stroke-linecap="round"/></g>
+          <g class="lg lg2"><path d="M-8-16V0M24-16V0" stroke="#1b1717" stroke-width="10" stroke-linecap="round"/><path d="M-8-16V0M24-16V0" stroke="#a3a8b0" stroke-width="5.5" stroke-linecap="round"/></g>
+          <ellipse class="o2" cx="0" cy="-26" rx="31" ry="17" fill="#a3a8b0"/>
+          <path d="M-12-40q4 8 0 14M-1-42q4 8 0 15M10-41q4 8 0 14" stroke="#6f747d" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <g class="shHead">
+            <circle class="o2" cx="30" cy="-46" r="17" fill="#a3a8b0"/>
+            <circle cx="36" cy="-47" r="2.6" fill="#1b1717"/><path d="M46-44l-3 3-2-3z" fill="#e7787d"/>
+            <path d="M40-39l12-1M40-37l11 3" stroke="#1b1717" stroke-width="1.3" opacity=".6"/>
+            <path class="o2" fill="#1b1a20" d="M12-52Q13-73 30-74V-52Z"/><path class="o2" fill="#eaa3b6" d="M30-74Q47-73 48-52H30Z"/>
+            <path class="o2" fill="#26252c" d="M10-57H30V-49H10Z"/><path class="o2" fill="#d4879d" d="M30-57H50V-49H30Z"/>
+            <path d="M36-70v12M42-66v10" stroke="#c97890" stroke-width="2"/>
+          </g>
+        </g>
+
+
+        <!-- машина мяулиции -->
+        <g class="an car">
+          <path class="o2" fill="#fff" d="M-60-52L-40-88H48L70-52Z"/>
+          <path fill="#a8d3f2" d="M-50-55L-34-82H-4V-55ZM4-55V-82H42L58-55Z"/>
+          <g class="carCat"><circle class="o2" cx="28" cy="-66" r="10" fill="#a3a8b0"/><path fill="#1b1a20" d="M18-70Q19-82 28-83V-70Z"/><path fill="#eaa3b6" d="M28-83Q37-82 38-70H28Z"/><circle cx="23" cy="-65" r="1.8" fill="#1b1717"/></g>
+          <circle class="o2" cx="-22" cy="-64" r="10" fill="#ffb36b"/><path fill="#22304f" d="M-32-70h20v-6q-10-5-20 0z"/>
+          <rect class="o2" x="-104" y="-54" width="208" height="42" rx="12" fill="#fff"/>
+          <rect x="-102" y="-40" width="204" height="9" fill="#2f5ed6"/>
+          <text x="2" y="-17" text-anchor="middle" class="sc-car">МЯУЛИЦИЯ</text>
+          <rect class="o2 sir1" x="-18" y="-98" width="16" height="10" rx="3"/><rect class="o2 sir2" x="2" y="-98" width="16" height="10" rx="3"/>
+          <circle class="o2" cx="-62" cy="-12" r="16" fill="#1b1717"/><circle cx="-62" cy="-12" r="6" fill="#9a9ca6"/>
+          <circle class="o2" cx="62" cy="-12" r="16" fill="#1b1717"/><circle cx="62" cy="-12" r="6" fill="#9a9ca6"/>
+          <rect x="-106" y="-34" width="8" height="8" rx="2" fill="#ffd66b"/>
+        </g>
+
+        <!-- полицейский, который выходит -->
+        <g class="an cop">
+          <path d="M-8-14V0M8-14V0" stroke="#1b1717" stroke-width="10" stroke-linecap="round"/><path d="M-8-14V0M8-14V0" stroke="#22304f" stroke-width="6" stroke-linecap="round"/>
+          <rect class="o2" x="-17" y="-56" width="34" height="46" rx="12" fill="#2b3a67"/>
+          <path d="M-14-42H-34" stroke="#1b1717" stroke-width="11" stroke-linecap="round"/><path d="M-14-42H-34" stroke="#2b3a67" stroke-width="6.5" stroke-linecap="round"/>
+          <circle class="o2" cx="-37" cy="-42" r="6" fill="#ffb36b"/>
+          <path fill="#e3b54a" d="M6-44l2 5 5 .5-4 3 1 5-4-3-4 3 1-5-4-3 5-.5z"/>
+          <rect x="-17" y="-22" width="34" height="5" fill="#111"/>
+          <path class="o2" fill="#ffb36b" d="M-12-80l-2-14 10 8zM12-80l2-14-10 8z"/>
+          <circle class="o2" cx="0" cy="-70" r="16" fill="#ffb36b"/>
+          <circle cx="-6" cy="-70" r="2.4" fill="#1b1717"/><circle cx="6" cy="-70" r="2.4" fill="#1b1717"/>
+          <path d="M-5-61h10" stroke="#1b1717" stroke-width="2.4" stroke-linecap="round"/>
+          <path class="o2" fill="#22304f" d="M-17-88h34v-10q-17-8-34 0z"/><path d="M-22-86H20" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="0" cy="-92" r="3" fill="#e3b54a"/>
+        </g>
+        <!-- пакетик -->
+        <g class="an pk"><path class="o2" fill="#c8efb8" d="M-9-20h18v20h-18z"/><path d="M-9-15h18" stroke="#1b1717" stroke-width="2"/><path fill="#3f8f3a" d="M0-11q6 2 2 8q-6-2-2-8z"/></g>
+        <!-- реплики -->
+        <g class="an b1"><rect class="o2" x="300" y="176" width="196" height="32" rx="12" fill="#fffaf3"/><text x="398" y="198" text-anchor="middle" class="sc-say">Стоять! Мята изымается</text></g>
+        <g class="an b2"><rect class="o2" x="150" y="196" width="122" height="30" rx="12" fill="#fffaf3"/><text x="211" y="217" text-anchor="middle" class="sc-say">это не моё…</text></g>
+      </svg>
+      <figcaption class="hand">тем временем у входа в MTN…</figcaption>
+    </figure>
+
+    <div class="bans blob"><span class="banTag">нельзя!</span><h3>Чего у нас делать нельзя</h3><ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Будить спящих котов</b><span>даже если очень хочется погладить. Спящий кот — святое.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Кормить котов со стола</b><span>у Михалыча диета. Он будет врать, что нет.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Брать котов на руки против их воли</b><span>кот сам решит, на ком ему лежать.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Трогать хвост Михалыча</b><span>это не обсуждается.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Фотографировать со вспышкой</b><span>котам неприятно, Сёма ночью вообще пугается.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Шуметь в зоне капсул</b><span>там спят люди. И коты.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Сидеть в капсуле больше 20 минут без продления</b><span>очередь из сонных — страшная сила.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Курить и вейпить</b><span>ни внутри, ни на крыльце. У котов нежные носы.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg><div><b>Приводить своих животных</b><span>наши ревнуют.</span></div></li></ul><p class="note">Нарушил — Михалыч посмотрит на тебя с разочарованием. Это хуже штрафа.</p></div>
+
+    <figure class="scene scene2 blob" aria-label="Мультсценка: рыжий кот пьёт чай MTN, улетает на воздушном шарике через дыру в потолке в розовый закат и потом падает обратно на свой стул">
+      <svg viewBox="0 0 720 440" role="img">
+        <defs>
+          <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="dk1"/><stop offset="1" class="dk2"/></linearGradient>
+          <filter id="pen" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="1" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter>
+        </defs>
+        <g filter="url(#pen)">
+          <rect width="720" height="224" fill="url(#dusk)"/>
+          <circle cx="560" cy="150" r="34" class="dsun"/>
+          <path class="pen thin" d="M20 60L180 20M60 120L260 40M420 30L600 90M480 120L700 40M200 150L340 80"/>
+          <path class="pen" d="M0 162Q180 176 360 160T720 166M0 172Q180 188 360 170T720 176"/>
+          <path class="pen" d="M118 196V140M106 146h24"/>
+          <!-- комната -->
+          <rect class="room" y="222" width="720" height="218"/>
+          <path class="pen thin" d="M0 412H720"/>
+          <rect class="pen win2" x="70" y="250" width="110" height="90" rx="4"/><path class="pen thin" d="M125 250v90M70 295h110"/>
+          <path class="pen frame" d="M600 250h70v54h-70z"/><path class="pen thin" d="M610 292l14-18 12 12 10-8 14 14"/>
+          <path class="pen tbl" d="M430 338h120v10H430zM442 348l-6 64M538 348l6 64"/>
+          <path class="pen pot" d="M470 312q0-16 20-16t20 16v18h-40zM510 314q14 0 10 14M470 316l-12-6M480 296q10-10 20 0"/>
+          <path class="pen thin steam" d="M486 286q-6-8 0-16M496 284q-6-8 0-16"/>
+          <path class="pen stool" d="M352 384h56v8h-56zM360 392l-6 20M400 392l6 20"/>
+        </g>
+
+        <!-- кот -->
+        <g class="an2 flyer" filter="url(#pen)">
+          <g class="balloon">
+            <path class="pen thin" d="M0-60Q-8-110 4-150"/>
+            <ellipse class="pen bal" cx="6" cy="-178" rx="26" ry="30"/>
+            <path class="pen thin" d="M-6-196q8-10 18-4M-4-172q14 6 22-8M-8-184q12 10 26-2"/>
+          </g>
+          <g class="tumble">
+            <path class="pen kt" d="M18-12q36-4 30-32q-4-12-12-6"/>
+            <path class="pen kt" d="M-24 0q-6-34 10-48q-10-16-2-34l12 12q10-4 20 0l12-12q8 18-2 34q16 14 10 48z"/>
+            <path class="pen thin" d="M-10-62l2 2M10-62l-2 2M-4-50q4 4 8 0M-28-56l12 2M-28-50l12 0M28-56l-12 2M28-50l-12 0"/>
+            <path class="pen thin" d="M-14-30q6 4 0 10M0-32v12M14-30q-6 4 0 10"/>
+            <path class="eyesOpen pen thin" d="M-9-63v1M9-63v1"/>
+          </g>
+        </g>
+        <g class="an2 cup2" filter="url(#pen)"><path class="pen mug" d="M-10-18h20v14q0 6-10 6t-10-6zM10-14q8 0 6 8l-6 2"/></g>
+
+        <!-- потолок с дырой поверх кота -->
+        <path class="ceil" filter="url(#pen)" d="M-4 190H322L312 198L326 206L314 214L324 222H-4ZM724 190H438L448 198L434 206L446 214L436 222H724Z"/>
+        <path class="pen thin" filter="url(#pen)" d="M318 188l-10-10M444 188l12-10M326 226l-4 10M436 226l6 8M300 230l3 3M460 232l-2 4"/>
+        <g class="an2 pop"><path class="pen" d="M376 20l-10-10M386 16v-14M396 20l10-10M372 30h-14M400 30h14"/></g>
+      </svg>
+      <figcaption class="hand">а у нас можно вот так: попить чаю и ненадолго улететь</figcaption>
+    </figure>
+
+    <div class="bans oks blob"><span class="banTag">можно!</span><h3>А вот это у нас можно</h3><ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Гладить котов, которые сами подставили голову</b><span>это приглашение. Отказываться невежливо.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Пить чай до бесконечности</b><span>кипяток доливаем сколько угодно. Говорят, после третьего чайника начинаешь левитировать.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Храпеть в капсуле</b><span>у нас белый шум, никто не услышит. Кроме кота.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Приходить в пижаме</b><span>особенно в ночную смену. Сёма одобряет.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Разговаривать с котами</b><span>они слушают. Иногда даже отвечают.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Приносить котам коробки</b><span>лучший подарок. Михалыч в любую влезет, проверено.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Ставить свою музыку</b><span>включай Spotify в «Радио MTN», только не очень громко.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Работать до закрытия</b><span>пока не придёт Сёма и не ляжет на ноутбук.</span></div></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6"/></svg><div><b>Ненадолго улететь</b><span>как кот на картинке. Главное — вернись к своему чаю.</span></div></li></ul><p class="note">Список дополняется — коты думают.</p></div>
+  </div>
+</section>
+
+<section class="band" id="menu">
+  <div class="wrap">
+    <div class="mhead">
+      <div><h2>Меню</h2><p class="lead">Чай, немного еды и время.</p></div>
+      <button class="cup" id="cup" type="button" aria-label="Чашка чая, в которой плавает лифчик">
+        <svg viewBox="0 0 130 110"><path class="steam" d="M48 14q-6 8 0 16M66 8q-6 8 0 16"/>
+          <path d="M18 44h84v14a40 40 0 0 1-40 40h-4a40 40 0 0 1-40-40z" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M102 54h8a12 12 0 0 1 0 24h-10" fill="none" stroke="var(--ink)" stroke-width="3"/>
+          <ellipse cx="60" cy="46" rx="40" ry="6" fill="#c9803a"/>
+          <g class="boat"><path d="M45 31Q42 22 48 18M75 31Q78 22 72 18" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><path d="M40 45Q40 30 52 29Q60 31 60 45Z" fill="#ff8fb1" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M60 45Q60 31 68 29Q80 30 80 45Z" fill="#ff8fb1" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M45 38q5 3 10 0M65 38q5 3 10 0" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".8"/><path d="M36 45H84" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/><path d="M56 34l4 3 4-3-1 6-3-2-3 2z" fill="#e8445f" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"/></g></svg>
+      </button>
+    </div>
+    <div class="menu" id="menuList"></div>
+    <p class="note">Позиции и цены — пример наполнения.</p>
+  </div>
+</section>
+
+<section class="band alt" id="radio">
+  <div class="wrap">
+    <h2>Радио MTN</h2>
+    <p class="lead">Лоу-фай, который собирается прямо в браузере, плюс мурчание и дождь. Ниже — кассеты. Они пока пустые: каждая открывается, когда находишь на сайте секрет.</p>
+    <div class="radio">
+      <div class="deck blob">
+        <div class="now"><button class="play" id="play" type="button" aria-label="Играть"><svg id="pIcon" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></button>
+          <div><b id="station">Чайная волна</b><span id="sub">нажми, чтобы включить · 76 bpm</span></div></div>
+        <div class="viz"><canvas id="viz"></canvas></div>
+        <div class="ctrls">
+          <button class="chip" id="tPurr" type="button" aria-pressed="false">Мурчание</button>
+          <button class="chip" id="tRain" type="button" aria-pressed="false">Дождь</button>
+          <button class="chip" id="tBeat" type="button" aria-pressed="true">Бит</button>
+          <label class="vol">Громкость<input id="vol" type="range" min="0" max="100" value="60"></label>
+        </div>
+      </div>
+      <div class="spot blob">
+        <h3><svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5 15.9a.7.7 0 0 1-1 .2c-2.7-1.6-6-2-10-1.1a.7.7 0 1 1-.3-1.4c4.3-1 8-.6 11 1.2.3.2.4.7.3 1.1zm1.3-3a.9.9 0 0 1-1.2.3c-3-1.9-7.7-2.4-11.3-1.3a.9.9 0 1 1-.5-1.7c4.1-1.2 9.2-.6 12.7 1.5.4.3.5.8.3 1.2zm.1-3.1C14.8 8.6 8.8 8.4 5.3 9.4a1 1 0 1 1-.6-2c4-1.2 10.7-1 14.8 1.5a1 1 0 0 1-1.1 1.9z"/></svg>Spotify</h3>
+        <p class="small" style="margin:0">Вставь ссылку на трек, альбом или плейлист.</p>
+        <div class="in"><input id="spUrl" placeholder="https://open.spotify.com/…" inputmode="url" aria-label="Ссылка Spotify"><button class="btn" id="spGo" type="button">Ок</button></div>
+        <div id="spOut"></div>
+        <p class="small" style="margin:0">Встроенный плеер Spotify заработает, когда сайт будет на своём домене. Здесь внешние плееры блокируются — поэтому есть кнопка «Открыть в Spotify».</p>
+      </div>
+    </div>
+    <div class="tapes" id="tapes"></div>
+  </div>
+</section>
+
+<section class="band" id="cats">
+  <div class="wrap">
+    <h2>Кто здесь работает</h2>
+    <p class="lead">Четыре кота, две смены, один начальник. Рыжих больше — так сложилось.</p>
+    <div class="cats" id="catList"></div>
+  </div>
+</section>
+
+<section class="band alt" id="book">
+  <div class="wrap book">
+    <div>
+      <h2>Забронировать место</h2>
+      <p class="lead">Выбери день, время и формат. Место у окна достаётся тому, кто пришёл первым — кот тоже так считает.</p>
+      <ul class="hours"><li><span>Пн–Чт</span><b>10:00–23:00</b></li><li><span>Пт–Сб</span><b>10:00–02:00</b></li><li><span>Вс</span><b>11:00–22:00</b></li></ul>
+    </div>
+    <form id="form" class="blob" novalidate>
+      <label>Имя<input id="fName" autocomplete="name" placeholder="Как к тебе обращаться"></label>
+      <div class="row"><label>Дата<input id="fDate" type="date"></label><label>Время<select id="fTime"></select></label></div>
+      <label>Сколько человек<select id="fPpl"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label>
+      <fieldset class="chips"><legend>Формат</legend>
+        <label><input type="radio" name="fmt" value="чай" checked><span>Чай</span></label>
+        <label><input type="radio" name="fmt" value="работа"><span>Поработать</span></label>
+        <label><input type="radio" name="fmt" value="нап"><span>Поспать</span></label>
+      </fieldset>
+      <div class="err" id="err"></div>
+      <button class="btn" type="submit">Забронировать</button>
+      <div class="ok" id="ok" role="status"></div>
+    </form>
+  </div>
+</section>
+</div>
+
+<div id="about" hidden>
+  <section class="band">
+    <div class="wrap ahero">
+      <div>
+        <span class="kicker">обо мне ↓</span>
+        <h1>Хоши <span class="nk">(mhron)</span><small>он же Керил</small></h1>
+        <p class="lead">Мне 16, я из Нижнего Тагила. Увлекаюсь кастомом вещей — переделываю одежду так, чтобы она была только моей. Люблю котов, особенно рыжих, поэтому и сайт про котов. Нарисованный Хоши справа следит за курсором — а если кликнуть, что-нибудь скажет.</p>
+        <dl class="facts2">
+          <div><dt>Имя</dt><dd>Керил</dd></div>
+          <div><dt>Ник</dt><dd>Хоши, он же mhron</dd></div>
+          <div><dt>Возраст</dt><dd>16</dd></div>
+          <div><dt>Город</dt><dd>Нижний Тагил</dd></div>
+          <div><dt>Увлечение</dt><dd>Кастом вещей</dd></div>
+          <div><dt>Звери</dt><dd>Коты. Рыжие — вне конкурса</dd></div>
+          <div><dt>В наушниках</dt><dd>Найди кассеты на главной — там всё сказано</dd></div>
+        </dl>
+      </div>
+      <div class="figbox blob" id="heroFig"><div class="fw"></div><span class="tag">это я</span><span class="tip">кликни по Хоши</span></div>
+    </div>
+  </section>
+  <section class="band alt">
+    <div class="wrap">
+      <h2>Хоши и Лунка</h2>
+      <p class="lead">Двое с рисунка. Смотри обоих или каждого по отдельности — поодиночке у каждого в руках своё. И нажми «Обнять».</p>
+      <div class="figbox duo blob" id="duo">
+        <div class="fw fwFr" id="wFr"></div><div class="fw fwMe" id="wMe"></div>
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="hearts" aria-hidden="true"><svg viewBox="0 0 24 22"><path d="M12 21C5 15 1 11 1 6.5A5.5 5.5 0 0 1 12 4a5.5 5.5 0 0 1 11 2.5C23 11 19 15 12 21z"/></svg><svg viewBox="0 0 24 22"><path d="M12 21C5 15 1 11 1 6.5A5.5 5.5 0 0 1 12 4a5.5 5.5 0 0 1 11 2.5C23 11 19 15 12 21z"/></svg></div>
+      </div>
+      <div class="duoBar">
+        <button class="chip" type="button" data-v="both" aria-pressed="true">Оба</button>
+        <button class="chip" type="button" data-v="me" aria-pressed="false">Хоши</button>
+        <button class="chip" type="button" data-v="fr" aria-pressed="false">Лунка</button>
+        <button class="btn" id="hug" type="button">Обнять</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="foot">
+    <div class="fcol"><a class="brand" href="#top">MTN</a><span>Meow · Tea · Nap — кото-кафе</span></div>
+    <nav class="soc" aria-label="Ссылки">
+      <a href="https://vk.ru/mhron" target="_blank" rel="noopener"><b>ВК</b><span>vk.ru/mhron</span></a>
+      <a href="https://t.me/qwzxcerdf" target="_blank" rel="noopener"><b>Телеграм</b><span>t.me/qwzxcerdf</span></a>
+      <a href="https://vk.ru/chpou" target="_blank" rel="noopener"><b>Моё учебное заведение</b><span>vk.ru/chpou</span></a>
+    </nav>
+    <button class="clock" id="clock" type="button" aria-label="Время у котов">--:--</button>
+  </div>
+  <p class="copy">© 2026 Meow Tea Nap · сайт создан для учебного проекта · автор — Хоши (Кирилл). Кафе, меню и цены выдуманы, коты — почти.</p>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<div class="dbar" id="dbar" aria-hidden="true">фаза быстрого сна · едем автостопом →</div>
+
+<script src="script.js"></script>
+</body>
+</html>
